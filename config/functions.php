@@ -5,6 +5,7 @@ function redirect($path){
     exit;
 }
 
+<<<<<<< HEAD
 function loginUser($pdo, $login, $password){
 //Application query #2
 
@@ -64,4 +65,6 @@ die('Access denied');
 }
 }
 
+=======
+>>>>>>> e6fa97461427607e78f486ad703109a0424e453b
 ?>

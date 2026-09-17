@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 USE it34a_lab_db;
 
+=======
+>>>>>>> e6fa97461427607e78f486ad703109a0424e453b
 CREATE TABLE IF NOT EXISTS activity_logs (
     activity_log_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id VARCHAR(255),
@@ -13,6 +16,7 @@ CREATE TABLE IF NOT EXISTS activity_logs (
 
     -- Timestamps
     activity_log_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+<<<<<<< HEAD
 );
 -- Table #3 users table
 
@@ -57,4 +61,6 @@ VALUES
     'user',
     '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO',
     'user'
+=======
+>>>>>>> e6fa97461427607e78f486ad703109a0424e453b
 );
