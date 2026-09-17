@@ -1,0 +1,60 @@
+USE it34a_lab_db;
+
+CREATE TABLE IF NOT EXISTS activity_logs (
+    activity_log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(255),
+    user_email VARCHAR(255),
+    activity_log_action VARCHAR(50) NOT NULL,
+    activity_log_status ENUM('success', 'failed') DEFAULT 'success',
+
+    -- Client Parameters
+    activity_log_ip_address VARCHAR(45),
+    activity_log_user_agent VARCHAR(255),
+
+    -- Timestamps
+    activity_log_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- Table #3 users table
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    -- Initial user details
+    user_email VARCHAR(50) UNIQUE NOT NULL,
+    user_username VARCHAR(20) UNIQUE NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
+    user_role ENUM('admin', 'manager', 'user') NOT NULL DEFAULT 'user',
+
+    -- User Created Timestamp
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+    
+    
+--insert query #1
+INSERT INTO users
+(
+    user_email,
+    user_username,
+    user_password,
+    user_role
+)
+VALUES
+(
+    'admin@example.com',
+    'admin',
+    '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO',
+    'admin'
+),
+(
+    'manager@example.com',
+    'manager',
+    '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO',
+    'manager'
+),
+(
+    'user@example.com',
+    'user',
+    '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO',
+    'user'
+);
