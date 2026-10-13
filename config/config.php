@@ -5,7 +5,7 @@ session_start();
 require_once __DIR__ . '/../functions/activity.php';
 require_once __DIR__ . '/../functions/auth.php';
 require_once __DIR__ . '/../functions/redirect.php';
-
+require_once __DIR__ . '/../functions/sessions.php';
 // define('','');
 
 define('BASE_URL', 'http://localhost/IT34A');
