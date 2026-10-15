@@ -1,6 +1,5 @@
 <?php
-
-function logActivity($pdo,$user_id,$user_email,$action, $status='success'){
+    function logActivity($pdo,$user_id,$user_email,$action, $status='success'){
         try{
             // Get client IP Address
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
@@ -42,4 +41,4 @@ function logActivity($pdo,$user_id,$user_email,$action, $status='success'){
             return false;
         }
     }
-    // commit
+?>
