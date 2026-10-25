@@ -10,3 +10,4 @@
     <a href="../auth/signout.php">Sign out</a>
 </body>
 </html>
+-- commit
