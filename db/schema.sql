@@ -64,4 +64,3 @@ VALUES
     '$2y$10$HNfhClczEWBxcFuJwP53iu2Y75Tba7IEtmX8vX.1tp0dZ5EVt9CbO',
     'user'
 );
-    -- commit
