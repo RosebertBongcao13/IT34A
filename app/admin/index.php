@@ -46,16 +46,16 @@ $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
         content="width=device-width, initial-scale=1"
     >
 
-    <title>Activity Logs</title>
+    <title>Welcome Admin</title>
 
 </head>
 
 <body>
 
-    <h1>Activity Logs</h1>
+    <h1>Welcome Admin</h1>
 
     <p>
-        <a href="./../auth/signout.php">Logout</a>
+         <a href="<?php echo BASE_URL; ?>/auth/signout.php">Logout</a>
     </p>
 
 
@@ -142,4 +142,3 @@ $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 </html>
- -- commit

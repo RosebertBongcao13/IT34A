@@ -77,9 +77,43 @@ function hasActiveUserSession($pdo,$user_id){
     
     return(bool) $stmt->fetchColumn();
 
-
-
 }
 
+//Sesions Timeout
+function checkSessionTimeout(){
+    global $pdo;
+
+    //
+    //
+    //
+
+    $timeout = 10;
+
+    //
+    if(isset($_SESSION['last_activity'])){
+    $inactive = time() - $_SESSION['last_activity'];
+    //
+    if($inactive >= $timeout){
+    endUserSession($pdo);
+
+    //
+    session_unset();
+    session_destroy();
+
+    //
+    header(
+        'Location'.
+        BASE_URL .
+        '/indder.phpp?timeout=1'
+
+    );
+    exit;
+
+    }
+}
+
+$_SEESION['last_activity'] = time();
+
+}
 
 ?>

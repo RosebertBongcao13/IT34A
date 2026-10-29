@@ -27,7 +27,7 @@ function loginUser($pdo,$login,$password){
     }
  
     // Check if user already has an active session
-    if(hasActiveSession($pdo, $user['user_id'])){
+    if(hasActiveUserSession($pdo, $user['user_id'])){
         return 'active_session';
     }
  
@@ -47,8 +47,11 @@ function requireLogin(){
     if(!isset($_SESSION['user_id'])){
         header('Location: ' . BASE_URL . 'index.php');
         exit;
-    };
-}
+        
+    }
+        checkSessionTimeout();
+
+};
  
     function requireRole($role){
         requireLogin();
@@ -60,4 +63,3 @@ function requireLogin(){
     }
  
 ?>
--- commit
