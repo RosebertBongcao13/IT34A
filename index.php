@@ -10,11 +10,14 @@ if(isset($_SESSION['user_id'])){
 $error = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+    requireCsrfToken();
+
     $login = trim($_POST['login'] ?? '');
     $password = $_POST['password'] ?? '';
 
 
-    if($login===' '||$password===' '){
+    if($login === '' || $password === ''){
         $error = 'Invalid login Credentials';
         logActivity(
             $pdo,
@@ -29,8 +32,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $result = loginUser($pdo,$login,$password);
 
-        if($result ===true){
-       
+        if($result === true){
+
             logActivity(
                 $pdo,
                 $_SESSION['user_id'],
@@ -38,11 +41,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 'login',
                 'success'
             );
-            
+
            header('Location: '. BASE_URL . '/app/' . $_SESSION['user_role']. '/index.php');
             exit;
 
-        } elseif ($result==='active_session'){
+        } elseif ($result === 'active_session'){
             $error = 'This account is already logged in on another device';
         } else{
             $error = 'Invalid login credentials';
@@ -59,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
@@ -68,6 +71,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <?php endif; ?>
     <h1>User Login</h1>
     <form method="POST">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateToken()) ?>">
         <label> Username or email </label>
         <input type="text"
                 name="login"
